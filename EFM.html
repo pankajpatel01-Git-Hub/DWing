@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everlasting Faith Ministries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;800&family=Lato:wght@300;400;700&&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E9C8;
+    --deep: #0D0A06;
+    --dark: #1A1410;
+    --mid: #2C2318;
+    --cream: #FAF6EE;
+    --text: #3D2E1A;
+    --accent: #8B2020;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13, 10, 6, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 70px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+  }
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: 0.3s; }
+  .mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0;
+    background: rgba(13,10,6,0.97); z-index: 99; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Cinzel', serif; font-size: 1.3rem; letter-spacing: 0.1em;
+    color: var(--gold-light); text-decoration: none;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--deep);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 20% 60%, rgba(139,32,32,0.08) 0%, transparent 60%);
+  }
+  .hero-lines {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.04) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.04) 80px);
+  }
+  .hero-cross {
+    position: absolute;
+    width: 2px; height: 220px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    left: 50%; top: 50%; transform: translate(-50%, -60%);
+    opacity: 0.3;
+  }
+  .hero-cross::after {
+    content: '';
+    position: absolute;
+    width: 100px; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    top: 40%; left: 50%; transform: translate(-50%, 0);
+  }
+  .hero-content {
+    position: relative; text-align: center; padding: 2rem;
+    animation: fadeUp 1.2s ease forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1.2s 0.2s both;
+  }
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    animation: fadeUp 1.2s 0.3s both;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: rgba(255,255,255,0.55);
+    margin-top: 1.2rem;
+    animation: fadeUp 1.2s 0.4s both;
+  }
+  .hero-divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+    animation: fadeUp 1.2s 0.5s both;
+  }
+  .hero-info {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem;
+    animation: fadeUp 1.2s 0.6s both;
+  }
+  .hero-info-item {
+    text-align: center;
+  }
+  .hero-info-item .label {
+    font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .hero-info-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; color: rgba(255,255,255,0.85);
+  }
+  .hero-cta {
+    margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1.2s 0.7s both;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--gold);
+    color: var(--deep);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer; background: transparent;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── SECTIONS general ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.2;
+  }
+  .section-title.light { color: #fff; }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin: 1.5rem 0;
+  }
+  .section-divider.center { margin: 1.5rem auto; }
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: rgba(61,46,26,0.8);
+    line-height: 1.8;
+    max-width: 650px;
+  }
+
+  .section-body ul { list-style: none; }
+  .section-body li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(61,46,26,0.8);
+    padding-left: 1rem; position: relative;
+  }
+  .section-body li::before {
+    content: '›'; position: absolute; left: 0;
+    color: var(--gold); font-weight: 700;
+  }
+
+  /* ── WELCOME STRIP ── */
+  #welcome {
+    background: var(--dark);
+    padding: 5rem 2rem;
+  }
+  .welcome-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .welcome-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    border-left: 3px solid var(--gold);
+    padding-left: 2rem;
+  }
+  .welcome-quote cite {
+    display: block; margin-top: 1rem;
+    font-style: normal; font-size: 0.9rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .welcome-right .section-body { color: rgba(255,255,255,0.65); }
+
+  /* ── VISIT ── */
+  #visit { background: var(--cream); }
+  .visit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px;
+    margin-top: 3rem;
+    background: rgba(201,168,76,0.2);
+  }
+  .visit-card {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    transition: transform 0.3s;
+  }
+  .visit-card:hover { transform: translateY(-4px); }
+  .visit-card .icon {
+    font-size: 1.8rem; margin-bottom: 1rem;
+  }
+  .visit-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem; letter-spacing: 0.12em; font-weight: 600;
+    color: var(--deep); margin-bottom: 0.7rem;
+  }
+  .visit-card p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem; line-height: 1.7;
+    color: rgba(61,46,26,0.7);
+  }
+  .visit-card p strong { color: var(--gold); font-weight: 700; }
+
+  /* ── BELIEFS ── */
+  #beliefs {
+    background: var(--dark);
+    position: relative; overflow: hidden;
+  }
+  #beliefs::before {
+    content: '';
+    position: absolute; top: -50%; right: -20%;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+  }
+  .beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .belief-item {
+    border-top: 1px solid rgba(201,168,76,0.25);
+    padding-top: 1.5rem;
+  }
+  .belief-num {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; letter-spacing: 0.2em;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .belief-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; font-weight: 600;
+    color: #fff; margin-bottom: 0.7rem;
+  }
+  .belief-text {
+    font-size: 1rem; line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+  }
+  .belief-verse {
+    display: block; margin-top: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1rem;
+    color: var(--gold-light); opacity: 0.75;
+  }
+
+  /* ── VALUES ── */
+  #values { background: #fff; }
+  .values-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .value-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .value-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem; font-weight: 800;
+    color: var(--gold-pale); line-height: 1;
+    flex-shrink: 0;
+  }
+  .value-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; font-weight: 400;
+    color: var(--deep); margin-bottom: 0.4rem;
+  }
+  .value-desc { font-size: 1rem; line-height: 1.7; color: rgba(61,46,26,0.65); }
+
+  /* ── CONNECT / GROUPS ── */
+  #connect { background: var(--cream); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .step-card {
+    background: #fff;
+    padding: 2rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .step-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.1);
+  }
+  .step-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem; font-weight: 800;
+    color: var(--gold-pale); line-height: 1; margin-bottom: 0.7rem;
+  }
+  .step-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--deep); margin-bottom: 0.7rem;
+  }
+  .step-text { font-size: 1rem; line-height: 1.7; color: rgba(61,46,26,0.65); }
+
+  /* ── SERVE ── */
+  #serve { background: var(--dark); }
+  .serve-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px; margin-top: 3rem;
+    background: rgba(201,168,76,0.15);
+  }
+  .serve-area {
+    background: var(--mid);
+    padding: 2rem;
+    transition: background 0.3s;
+  }
+  .serve-area:hover { background: #261e14; }
+  .serve-area h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem; font-weight: 400;
+    color: var(--gold); letter-spacing: 0.08em;
+    margin-bottom: 0.8rem;
+  }
+  .serve-area ul { list-style: none; }
+  .serve-area li {
+    font-size: 1rem; line-height: 2;
+    color: rgba(255,255,255,0.55);
+    padding-left: 1rem; position: relative;
+  }
+  .serve-area li::before {
+    content: '›'; position: absolute; left: 0;
+    color: var(--gold); font-weight: 700;
+  }
+
+  /* ── BAPTISM ── */
+  #baptism { background: #fff; }
+  .baptism-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    margin-top: 3rem;
+  }
+  .baptism-highlight {
+    background: var(--deep);
+    padding: 3rem;
+    position: relative; overflow: hidden;
+  }
+  .baptism-highlight::before {
+    content: '✦';
+    position: absolute; top: -30px; right: -20px;
+    font-size: 10rem; color: rgba(201,168,76,0.04);
+  }
+  .baptism-highlight blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8; border-left: 2px solid var(--gold);
+    padding-left: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .baptism-highlight cite {
+    font-style: normal; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .baptism-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+  .bstep {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .bstep-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--gold-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .bstep h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--deep); margin-bottom: 0.3rem;
+  }
+  .bstep p { font-size: 0.87rem; line-height: 1.6; color: rgba(61,46,26,0.65); }
+
+  /* ── FAQ ── */
+  #faq { background: var(--cream); }
+  .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .faq-item:last-child { border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .faq-q {
+    width: 100%; background: none; border: none; text-align: left; cursor: pointer;
+    padding: 1.5rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--deep); transition: color 0.3s;
+  }
+  .faq-q:hover { color: var(--gold); }
+  .faq-q .arrow {
+    font-size: 1.2rem; color: var(--gold); transition: transform 0.3s; flex-shrink: 0;
+  }
+  .faq-q.open .arrow { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+  }
+  .faq-a-inner {
+    padding-bottom: 1.5rem;
+    font-size: 0.93rem; line-height: 1.8;
+    color: rgba(61,46,26,0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--deep); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    margin-top: 3rem;
+  }
+  .contact-info { }
+  .contact-block { margin-bottom: 2.5rem; }
+  .contact-block .label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .contact-block .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6;
+  }
+  .contact-block a { color: var(--gold-light); text-decoration: none; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Lato', sans-serif; font-size: 0.9rem;
+    outline: none; transition: border-color 0.3s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: var(--dark); color: #fff; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem; letter-spacing: 0.2em;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.95rem;
+    color: rgba(255,255,255,0.35); margin-bottom: 1.5rem;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .footer-links a {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.75rem; color: rgba(255,255,255,0.2);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  .reveal p strong { color: var(--gold); font-weight: 700; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .welcome-grid, .baptism-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">EFM</a>
+  <ul class="nav-links">
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#beliefs">Beliefs</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#connect">Connect</a></li>
+    <li><a href="#serve">Serve</a></li>
+    <li><a href="#baptism">Baptism</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#visit" onclick="toggleMenu()">Visit</a>
+  <a href="#beliefs" onclick="toggleMenu()">Beliefs</a>
+  <a href="#values" onclick="toggleMenu()">Values</a>
+  <a href="#connect" onclick="toggleMenu()">Connect</a>
+  <a href="#serve" onclick="toggleMenu()">Serve</a>
+  <a href="#baptism" onclick="toggleMenu()">Baptism</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-cross"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Welcome to</p>
+    <h1 class="hero-title">Everlasting<br><span>Faith</span> Ministries</h1>
+    <p class="hero-subtitle">Living boldly for Christ in Southern New Hampshire</p>
+    <div class="hero-divider"></div>
+    <div class="hero-info">
+      <div class="hero-info-item">
+        <div class="label">Sunday Service</div>
+        <div class="value">10:00 AM</div>
+      </div>
+      <div class="hero-info-item">
+        <div class="label">Midweek Online</div>
+        <div class="value">Thursdays 6:30 PM</div>
+      </div>
+      <div class="hero-info-item">
+        <div class="label">Location</div>
+        <div class="value">Hampton, NH</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#visit" class="btn-primary">Plan Your Visit</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME -->
+<section id="welcome">
+  <div class="container">
+    <div class="welcome-grid reveal">
+      <div class="welcome-quote">
+        "If you want a real encounter with the Lord Jesus Christ, look no further — it is the place to be in the beautiful seacoast area of Southern New Hampshire."
+        <cite>— Pastor David Wings Sr.</cite>
+      </div>
+      <div class="welcome-right">
+        <p class="section-label">Our Heart</p>
+        <h2 class="section-title light">A Church That Lives Boldly</h2>
+        <div class="section-divider"></div>
+        <p class="section-body">We are a Bible-based, Spirit-led church committed to helping people grow in their relationship with Jesus Christ. We believe in living boldly for God, loving others, and sharing the Gospel with the world. Whether you're new to faith or returning, you'll be welcomed, loved, and inspired.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label"></p>
+      <h2 class="section-title">Planning Your Visit</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">We can’t wait to meet you! Whether you are new to church, returning to faith, or looking for a community where you can grow, <b>Everlasting Faith Ministries</b> is a place where you will be welcomed, loved, and inspired to live boldly for God.</p>
+    </div>
+    <div class="reveal">
+      <p class="section-label"></p>
+      <h2 class="section-title">What to Expect</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">
+        At <strong>Everlasting Faith Ministries</strong>, our gatherings are centered on 
+        <strong>Jesus Christ, Spirit-led worship</strong>, and 
+        <strong>practical, Bible-based teaching</strong> that helps you grow in faith and purpose. Our services are joyful, uplifting, and filled with an atmosphere of faith, love, and encouragement.
+        <br>You can expect:
+        <br>■  Heartfelt worship and passionate praise
+        <br>■  Inspiring, Bible-based messages
+        <br>■  Genuine community and prayer support
+        <br>■  A family-friendly environment where everyone belongs
+        <br>■  You can expect the presence of God, you can expect the power of Jesus Christ to move in the service, with healings, prophetic utterances, you can expect Holy Spirit to confirm the preaching of the Word with miracles, signs and wonders, just like He did with all of the Apostle’s, just like He is doing around the world today. 
+        <br>■  We are a bold Church of faith, we have seen God’s precious anointing touch lives with His mighty power, healings, people falling down under the power of the Holy Spirit.
+        <br>■  If you want a real encounter with the Lord Jesus Christ, look no further than Everlasting Faith Ministries it is the place to be in the beautiful seacoast area of Southern New Hampshire        
+      </p>
+    </div>
+    <div class="visit-cards reveal">
+      <div class="visit-card">
+        <div class="icon">🕙</div>
+        <h3>Service Times</h3>
+        <p>Join us every <strong>Sunday at 10:00 AM</strong> for worship. Midweek Bible study meets <strong>Thursdays 6:30–8:00 PM</strong> online via Microsoft Teams.</p>
+      </div>
+      <div class="visit-card">
+        <div class="icon">📍</div>
+        <h3>Location</h3>
+        <p><strong>Best Western Hotel</strong><br>Conference Room<br>815 Lafayette Rd<br>Hampton, NH 03842<br>Free parking on-site.</p>
+      </div>
+      <div class="visit-card">
+        <div class="icon">✝️</div>
+        <h3>Worship Experience</h3>
+        <p>Heartfelt worship, passionate praise, Bible-based messages, prayer, and the move of the Holy Spirit — <strong>healings, signs, and wonders</strong>.</p>
+      </div>
+      <div class="visit-card">
+        <div class="icon">👨‍👩‍👧</div>
+        <h3>Families Welcome</h3>
+        <p>We love families! Children's ministry is <strong>coming soon</strong>. Our warm greeters will help you find a seat the moment you walk through the door.</p>
+      </div>
+      <div class="visit-card">
+        <div class="icon">👕</div>
+        <h3>What to Wear</h3>
+        <p>Come as you are! Some dress casually, others formally. <strong>God looks at the heart</strong>, not your outfit — you'll fit right in.</p>
+      </div>
+      <div class="visit-card">
+        <div class="icon">🤝</div>
+        <h3>When You Arrive</h3>
+        <p>Our greeters and ushers welcome you at the door. Visit the <strong>Welcome Desk</strong> after service or fill out a Connection Card to stay connected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEFS -->
+<section id="beliefs">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">What We Believe</p>
+      <h2 class="section-title light">Our Core Beliefs</h2>
+      <div class="section-divider"></div>
+      <p class="section-body" style="color:rgba(255,255,255,0.55)">Rooted in Scripture and centered on loving God and people. Our faith is built on the unchanging Word of God.</p>
+    </div>
+    <div class="beliefs-grid reveal">
+      <div class="belief-item">
+        <div class="belief-num">01 — The Bible</div>
+        <div class="belief-title">God's Inspired Word</div>
+        <p class="belief-text">The Bible is the inspired, infallible, and authoritative Word of God — the ultimate guide for faith, life, and conduct.</p>
+        <span class="belief-verse">2 Timothy 3:16</span>
+      </div>
+      <div class="belief-item">
+        <div class="belief-num">02 — God</div>
+        <div class="belief-title">The Holy Trinity</div>
+        <p class="belief-text">One God eternally existing in three Persons: Father, Son, and Holy Spirit — coequal, coeternal, Creator of all things.</p>
+        <span class="belief-verse">Deuteronomy 6:4</span>
+      </div>
+      <div class="belief-item">
+        <div class="belief-num">03 — Jesus Christ</div>
+        <div class="belief-title">Son of God, Savior</div>
+        <p class="belief-text">Jesus is fully God and fully man. Born of a virgin, died for our sins, rose on the third day — the only way to salvation.</p>
+        <span class="belief-verse">Acts 4:12</span>
+      </div>
+      <div class="belief-item">
+        <div class="belief-num">04 — The Holy Spirit</div>
+        <div class="belief-title">Empowering Presence</div>
+        <p class="belief-text">The Holy Spirit dwells within every believer, empowering holy living, bold witness, and spiritual gifts to build up the Body of Christ.</p>
+        <span class="belief-verse">Acts 1:8</span>
+      </div>
+      <div class="belief-item">
+        <div class="belief-num">05 — Salvation</div>
+        <div class="belief-title">Grace Through Faith</div>
+        <p class="belief-text">Salvation is a free gift of God's grace, received by faith in Jesus Christ alone — not earned by works, but by His finished work on the cross.</p>
+        <span class="belief-verse">Ephesians 2:8–9</span>
+      </div>
+      <div class="belief-item">
+        <div class="belief-num">06 — Bold Faith</div>
+        <div class="belief-title">Courageous Living</div>
+        <p class="belief-text">Faith calls us to live boldly — trusting God's promises, standing firm in truth, and acting in love and courage in every circumstance.</p>
+        <span class="belief-verse">Hebrews 11:6</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">What Drives Us</p>
+      <h2 class="section-title">Core Values</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="values-list reveal">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div>
+          <div class="value-name">Faith in God</div>
+          <p class="value-desc">We trust fully in God's Word. Our faith moves us to believe the impossible and stand firm in every season.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div>
+          <div class="value-name">Christ-Centered Living</div>
+          <p class="value-desc">Jesus is at the heart of everything we do — reflecting His character, love, and truth in every area of life.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div>
+          <div class="value-name">Boldness & Courage</div>
+          <p class="value-desc">Unashamed of the Gospel, fearless in faith, confident in God's power to work through us.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div>
+          <div class="value-name">Love in Action</div>
+          <p class="value-desc">Not love in words alone — but compassion, service, and generosity demonstrated through tangible acts of grace.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">05</div>
+        <div>
+          <div class="value-name">Integrity & Holiness</div>
+          <p class="value-desc">Pursuing lives of honesty, purity, and holiness — honoring God in thought, word, and deed.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">06</div>
+        <div>
+          <div class="value-name">Worship & Prayer</div>
+          <p class="value-desc">Drawing closer to God through Spirit-filled worship and prayer, releasing His presence and power.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">07</div>
+        <div>
+          <div class="value-name">Discipleship & Growth</div>
+          <p class="value-desc">Committed to growing in God's Word and raising up bold disciples who live out their calling.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">08</div>
+        <div>
+          <div class="value-name">Community & Fellowship</div>
+          <p class="value-desc">Genuine relationships where believers encourage and strengthen one another in faith and love.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">09</div>
+        <div>
+          <div class="value-name">Service & Outreach</div>
+          <p class="value-desc">Serving others with compassion and humility, reaching our community and world with the love of Christ.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">10</div>
+        <div>
+          <div class="value-name">Excellence for God's Glory</div>
+          <p class="value-desc">Honoring God with excellence in all we do — because He deserves our very best.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">You Belong Here</p>
+      <h2 class="section-title">Connect With a Group</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">You were never meant to live out your faith alone. Groups help us grow stronger, braver, and bolder — together. Here's how to get connected.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Start With a Simple Step</div>
+        <p class="step-text">You don't need to have everything figured out. Visit the Welcome Desk, fill out a Connection Card, or scan the QR code in the lobby.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">Find a Group That Fits You</div>
+        <p class="step-text">Bible study, small groups, men's, women's, couples, youth, young adults, prayer, discipleship, and outreach groups for every season of life.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Join Even If You Feel Unsure</div>
+        <p class="step-text">You don't have to be a Bible expert. Groups welcome questions, value honesty, and are safe places to build faith and relationships.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-title">Talk to a Group Leader</div>
+        <p class="step-text">Meet leaders during Group Launch Sundays, ask a volunteer or pastor for an introduction, or reach out through the church website.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">05</div>
+        <div class="step-title">Commit for a Season</div>
+        <p class="step-text">You don't have to commit forever — just a season. Attend consistently, participate openly, pray and grow together.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">06</div>
+        <div class="step-title">Take the Next Step</div>
+        <p class="step-text">As you grow, you may feel called to lead. Become a group host, invite others, or help start a new group in your community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVE -->
+<section id="serve">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Get Involved</p>
+      <h2 class="section-title light">Ways to Serve</h2>
+      <div class="section-divider"></div>
+      <p class="section-body" style="color:rgba(255,255,255,0.55)">Living boldly means stepping out in faith, serving with love, and trusting God to work through us. Every believer has a place to serve and grow.</p>
+    </div>
+    <div class="serve-areas reveal">
+      <div class="serve-area">
+        <h3>Bold Worship</h3>
+        <ul>
+          <li>Worship leaders & musicians</li>
+          <li>Choir & worship support</li>
+          <li>Sound & media team</li>
+          <li>Livestream & online hosts</li>
+        </ul>
+      </div>
+      <div class="serve-area">
+        <h3>Bold Hospitality</h3>
+        <ul>
+          <li>Front-door greeters</li>
+          <li>Ushers & parking hosts</li>
+          <li>Welcome & connection team</li>
+          <li>First-time guest follow-up</li>
+        </ul>
+      </div>
+      <div class="serve-area">
+        <h3>Next-Gen Disciples</h3>
+        <ul>
+          <li>Nursery caregivers</li>
+          <li>Children's ministry teachers</li>
+          <li>Youth mentors</li>
+          <li>Safety & check-in teams</li>
+        </ul>
+      </div>
+      <div class="serve-area">
+        <h3>Discipleship & Prayer</h3>
+        <ul>
+          <li>Small group leaders</li>
+          <li>Bible teachers & facilitators</li>
+          <li>Prayer warriors</li>
+          <li>Altar ministry & new-believer mentors</li>
+        </ul>
+      </div>
+      <div class="serve-area">
+        <h3>Care & Compassion</h3>
+        <ul>
+          <li>Prayer & encouragement teams</li>
+          <li>Meal ministry</li>
+          <li>Grief support</li>
+          <li>Benevolence & crisis response</li>
+        </ul>
+      </div>
+      <div class="serve-area">
+        <h3>Outreach & Mission</h3>
+        <ul>
+          <li>Community service teams</li>
+          <li>Evangelism & street ministry</li>
+          <li>Food pantry outreach</li>
+          <li>Graphic design & digital content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAPTISM -->
+<section id="baptism">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Next Steps</p>
+      <h2 class="section-title">Water Baptism</h2>
+      <div class="section-divider"></div>
+      <p class="section-body">If God has changed your life, baptism is your moment to declare it — boldly, publicly, and joyfully.</p>
+    </div>
+    <div class="baptism-layout reveal">
+      <div class="baptism-highlight">
+        <blockquote>"We were therefore buried with Him through baptism into death in order that, just as Christ was raised from the dead... we too may live a new life."</blockquote>
+        <cite>Romans 6:4</cite>
+        <div style="margin-top:2rem">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.8;">Baptism does not save us — <strong style="color:var(--gold-light)">Jesus saves us</strong> — but baptism is a powerful step of obedience that follows salvation. We practice full immersion in water, following the example of Jesus.</p>
+        </div>
+      </div>
+      <div class="baptism-steps">
+        <div class="bstep">
+          <div class="bstep-icon">✝️</div>
+          <div>
+            <h4>Who Should Be Baptized?</h4>
+            <p>Anyone who has accepted Jesus Christ as Lord and Savior, including new believers and those who wish to be baptized as a conscious decision of faith.</p>
+          </div>
+        </div>
+        <div class="bstep">
+          <div class="bstep-icon">💧</div>
+          <div>
+            <h4>What to Expect</h4>
+            <p>A brief explanation and prayer, a personal declaration of faith, immersion in water in the name of the Father, Son, and Holy Spirit, and celebration with the church family.</p>
+          </div>
+        </div>
+        <div class="bstep">
+          <div class="bstep-icon">📝</div>
+          <div>
+            <h4>How to Sign Up</h4>
+            <p>Visit the Welcome Desk, register online, speak with a pastor or ministry leader, or attend a baptism class or orientation.</p>
+          </div>
+        </div>
+        <div class="bstep">
+          <div class="bstep-icon">❓</div>
+          <div>
+            <h4>Do I Need to Be Perfect?</h4>
+            <p>No. Baptism is about surrender, not perfection. Bold faith often begins with a simple yes. We're here to walk every step with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Got Questions?</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What kind of church is Everlasting Faith Ministries?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">We are a Bible-based, Spirit-led church committed to helping people grow in their relationship with Jesus Christ. We believe in living boldly for God, loving others, and sharing the Gospel. We believe every believer should be filled with the Holy Spirit and operate in His power and gifts, just as Jesus commanded.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What are your service times?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">We gather every Sunday at 10:00 AM for worship, teaching, and fellowship at the Best Western Hotel Conference Room, 815 Lafayette Rd, Hampton NH. We also host midweek Bible study online via Microsoft Teams every Thursday from 6:30–8:00 PM.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What should I expect at a service?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Our services include passionate worship, practical teaching from God's Word, prayer, and a warm community. You can expect to see Jesus Christ move in power by the Holy Spirit — healings, prophetic utterances, miracles, signs and wonders. You'll find an atmosphere of faith, love, and encouragement where everyone is welcome.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need to dress a certain way?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Not at all! Come as you are. Some people dress casually, others more formally — what matters most is your heart, not your outfit.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there something for children and youth?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Children's ministry is coming soon! We love families and are actively building out programs for the next generation. Stay tuned — check back often for updates.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How can I get involved?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">There are many ways to get connected — join a small group, serve on a ministry team, attend discipleship classes, or participate in outreach programs. Every believer has a place to serve and grow. Visit the Welcome Desk or contact us to find where you fit.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I become a member?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Membership begins with attending our New Members Class (Faith Foundations), where you'll learn about our vision, values, and ministries. Afterward, you can make a commitment to the church family through membership.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What does "living boldly in faith" mean?
+          <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">To us, living boldly means trusting God completely, standing firm on His Word, and living with courage, compassion, and purpose — no matter the circumstance. We've seen people healed of cancers, baptized in the Spirit, and lives transformed. As Apostle Paul tells us: "we walk by faith, not by sight" (2 Corinthians 5:7). At Everlasting Faith, you won't walk that faith alone.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">We'd Love to Hear From You</p>
+      <h2 class="section-title light">Get in Touch</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <div class="contact-block">
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:6032022459">(603) 202-2459</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:pastordavidwingsr@gmail.com">pastordavidwingsr@gmail.com</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="label">Worship Location</div>
+          <div class="value">Best Western Hotel, Conference Room<br>815 Lafayette Rd<br>Hampton, NH 03842</div>
+        </div>
+        <div class="contact-block">
+          <div class="label">Mailing Address</div>
+          <div class="value">30 Elmview Cir<br>Dover, NH 03820</div>
+        </div>
+        <div class="contact-block">
+          <div class="label">Sunday Service</div>
+          <div class="value">Every Sunday at 10:00 AM</div>
+        </div>
+        <div class="contact-block">
+          <div class="label">Midweek Online</div>
+          <div class="value">Thursdays 6:30–8:00 PM<br>Microsoft Teams</div>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Fill out this connection card and we'll be in touch. We'd be honored to pray with you and help you take your next step.</p>
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Your last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(603) 000-0000">
+          </div>
+          <div class="form-group">
+            <label>I Am A</label>
+            <select>
+              <option value="">Select one...</option>
+              <option>First-time guest</option>
+              <option>Second-time guest</option>
+              <option>Regular attender</option>
+              <option>Member</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>How Can We Help?</label>
+            <select>
+              <option value="">Select one...</option>
+              <option>I'd like to know more about following Jesus</option>
+              <option>I'd like to be baptized</option>
+              <option>I want to join a small group</option>
+              <option>I want to serve on a team</option>
+              <option>I'd like to become a member</option>
+              <option>I want to learn more about this church</option>
+              <option>I have a prayer request</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message or Prayer Request</label>
+            <textarea placeholder="Share anything on your heart..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;">Send Message</button>
+          <p id="form-msg" style="display:none;color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;margin-top:0.5rem;"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Everlasting Faith Ministries</div>
+  <p class="footer-tagline">Living boldly for Christ in Southern New Hampshire</p>
+  <div class="footer-links">
+    <a href="#visit">Plan a Visit</a>
+    <a href="#beliefs">Beliefs</a>
+    <a href="#connect">Connect</a>
+    <a href="#serve">Serve</a>
+    <a href="#baptism">Baptism</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p class="footer-copy">© 2025 Everlasting Faith Ministries · Hampton, NH · (603) 202-2459</p>
+</footer>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.style.maxHeight = null;
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  // Form
+  function submitForm(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.textContent = 'Thank you! We\'ll be in touch soon. God bless you.';
+    msg.style.display = 'block';
+    e.target.reset();
+  }
+
+  // Active nav highlight
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold)' : 'rgba(255,255,255,0.7)';
+    });
+  });
+</script>
+</body>
+</html>
